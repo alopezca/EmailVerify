@@ -35,20 +35,5 @@ Route::prefix('admin')->group(function() {
 Route::get('/email', function(){
     return view('emails.welcome');
 });
-Route::get('sendemail', function () {
 
-    $data = array(
-        'name' => "Learning Laravel",
-    );
-
-    Mail::send('emails.welcome', $data, function ($message) {
-
-        $message->from('alopezca16dw@ikzubirimanteo.com', 'Learning Laravel');
-
-        $message->to('alopezca16dw@ikzubirimanteo.com')->subject('Learning Laravel test email');
-
-    });
-
-    return "Your email has been sent successfully";
-
-});
+Route::get('verifyEmailFirst','Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
